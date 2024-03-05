@@ -95,4 +95,4 @@ async def dollar(ctx, amount):
 
 
 
-bot.run("MTIxNDIxMjk3NTk5MzQyMTg2NA.GugLAR.IQ6MaretPYUjgXop93h5kKnDvs9MF3-DUWoGnc")
+bot.run("BOT TOKEN")
