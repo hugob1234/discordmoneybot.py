@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 bot = commands.Bot(command_prefix="!", intents= discord.Intents.all())
 
-
 @bot.event
 async def on_ready():
   print("Bot is now online!")
@@ -13,6 +12,9 @@ async def exchange(ctx):
   embed.add_field(name="!pounds", value="Converts foreign currencies into British pounds (!pounds $400) for example", inline=False)
   embed.add_field(name="!euro", value="  Converts foreign currencies into euros for example (!euro $400)", inline=False)
   embed.add_field(name="!dollar", value="Converts foreign currencies into US dollars for example (!dollar £400) ", inline=False)
+  embed.add_field(name="!plogo", value="Shows pound sign", inline=False)
+  embed.add_field(name="!elogo", value="Shows euro sign", inline=False)
+  embed.add_field(name="!dlogo", value="Shows dollar sign", inline=False)
   embed.add_field(name="!moneylogo", value="Shows profile pic of bot", inline=False)
   embed.set_footer(text="Made by Hugo B")
   await ctx.send(embed=embed)
@@ -21,6 +23,24 @@ async def exchange(ctx):
 @bot.command()
 async def moneylogo(ctx):
   with open('money.jpg', 'rb') as f:
+    picture = discord.File(f)
+    await ctx.send(file=picture)
+
+@bot.command()
+async def plogo(ctx):
+  with open('pounds.jpeg', 'rb') as f:
+    picture = discord.File(f)
+    await ctx.send(file=picture)
+
+@bot.command()
+async def dlogo(ctx):
+  with open('d.jpg', 'rb') as f:
+    picture = discord.File(f)
+    await ctx.send(file=picture)
+
+@bot.command()
+async def elogo(ctx):
+  with open('euro.jpg', 'rb') as f:
     picture = discord.File(f)
     await ctx.send(file=picture)
 
@@ -43,9 +63,9 @@ async def pounds(ctx, amount):
     embed.set_footer(text="MONEY EXCHANGER @2024")
     await ctx.send(embed=embed)
   elif amount[0] == "£":
-    await ctx.send("This command is used to exchange foreign currencies to British pounds")
+    await ctx.send("This command is used to exchange foreign currencies to British pounds.")
   else:
-    await ctx.send("Currency isnt supported")
+    await ctx.send("Currency isnt supported.")
     
 @bot.command()
 async def euro(ctx, amount):
@@ -61,14 +81,14 @@ async def euro(ctx, amount):
     embed = discord.Embed(title="CURRENCY EXCHANGE", description="US dollars to euros", color=discord.Color.green())
     num1 = ''.join(amount[1:])
     num = float(num1)
-    num = num * 1.12
+    num = num * 0.95
     embed.add_field(name="Result:", value=f"${num1} was converted into €{(round(num, 2))}", inline=False)
     embed.set_footer(text="MONEY EXCHANGER @2024")
     await ctx.send(embed=embed)
   elif amount[0] == "€":
-    await ctx.send("This command is used to exchange foreign currencies to Euros")
+    await ctx.send("This command is used to exchange foreign currencies to Euros.")
   else:
-    await ctx.send("Currency isnt supported")
+    await ctx.send("Currency isnt supported.")
 
 @bot.command()
 async def dollar(ctx, amount):
@@ -88,11 +108,11 @@ async def dollar(ctx, amount):
     embed.add_field(name="Result:", value=f"€{num1} was converted into ${(round(num, 2))}", inline=False)
     embed.set_footer(text="MONEY EXCHANGER @2024")
     await ctx.send(embed=embed)
-  elif amount[0] == "€":
-    await ctx.send("This command is used to exchange foreign currencies to US dollars")
+  elif amount[0] == "$":
+    await ctx.send("This command is used to exchange foreign currencies to US dollars.")
   else:
-    await ctx.send("Currency isnt supported")
+    await ctx.send("Currency isnt supported.")
 
 
 
-bot.run("BOT TOKEN")
+bot.run("MTIxNDIxMjk3NTk5MzQyMTg2NA.GEUVUn.U4UpJgeMebEA-OTDm5cd-6znykqL25CuuQmylE")
