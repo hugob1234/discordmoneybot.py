@@ -46,7 +46,7 @@ async def elogo(ctx):
 
 @bot.command()
 async def pounds(ctx, amount):
-  if amount[0] == "€":
+  if amount[0] == "€" or amount[0] == "e":
     embed = discord.Embed(title="CURRENCY EXCHANGE", description="Euro to pounds", color=discord.Color.green())
     num1 = ''.join(amount[1:])
     num = float(num1)
@@ -54,11 +54,11 @@ async def pounds(ctx, amount):
     embed.add_field(name="Result:", value=f"€{num1} was converted into £{round(num, 2)}", inline=False)
     embed.set_footer(text="MONEY EXCHANGER @2024")
     await ctx.send(embed=embed)
-  elif amount[0] == "$":
+  elif amount[0] == "$" or amount[0] == "d":
     embed = discord.Embed(title="CURRENCY EXCHANGE", description="US dollars to pounds", color=discord.Color.green())
     num1 = ''.join(amount[1:])
     num = float(num1)
-    num = num * 0.95
+    num = num * 0.80
     embed.add_field(name="Result:", value=f"${num1} was converted into £{round(num, 2)}", inline=False)
     embed.set_footer(text="MONEY EXCHANGER @2024")
     await ctx.send(embed=embed)
@@ -73,7 +73,7 @@ async def euro(ctx, amount):
     embed = discord.Embed(title="CURRENCY EXCHANGE", description="Pounds to euros", color=discord.Color.green())
     num1 = ''.join(amount[1:])
     num = float(num1)
-    num = num * 1.22
+    num = num * 1.12
     embed.add_field(name="Result:", value=f"£{num1} was converted into €{round(num, 2)}", inline=False)
     embed.set_footer(text="MONEY EXCHANGER @2024")
     await ctx.send(embed=embed)
@@ -81,7 +81,7 @@ async def euro(ctx, amount):
     embed = discord.Embed(title="CURRENCY EXCHANGE", description="US dollars to euros", color=discord.Color.green())
     num1 = ''.join(amount[1:])
     num = float(num1)
-    num = num * 0.95
+    num = num * 0.92
     embed.add_field(name="Result:", value=f"${num1} was converted into €{(round(num, 2))}", inline=False)
     embed.set_footer(text="MONEY EXCHANGER @2024")
     await ctx.send(embed=embed)
@@ -96,7 +96,7 @@ async def dollar(ctx, amount):
     embed = discord.Embed(title="CURRENCY EXCHANGE", description="Pounds to dollars", color=discord.Color.green())
     num1 = ''.join(amount[1:])
     num = float(num1)
-    num = num * 1.22
+    num = num * 1.20
     embed.add_field(name="Result:", value=f"£{num1} was converted into ${round(num, 2)}", inline=False)
     embed.set_footer(text="MONEY EXCHANGER @2024")
     await ctx.send(embed=embed)
